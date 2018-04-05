@@ -4,12 +4,12 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.32
-Release  : 1
+Release  : 2
 URL      : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Summary  : 'Get information about a class and its structure'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Class-Inspector-doc
 
 %description
