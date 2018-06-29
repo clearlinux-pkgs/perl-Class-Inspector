@@ -4,13 +4,14 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.32
-Release  : 3
+Release  : 4
 URL      : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Summary  : 'Get information about a class and its structure'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-Class-Inspector-doc
+Requires: perl-Class-Inspector-license
+Requires: perl-Class-Inspector-man
 
 %description
 NAME
@@ -18,12 +19,20 @@ Class::Inspector - Get information about a class and its structure
 VERSION
 version 1.32
 
-%package doc
-Summary: doc components for the perl-Class-Inspector package.
-Group: Documentation
+%package license
+Summary: license components for the perl-Class-Inspector package.
+Group: Default
 
-%description doc
-doc components for the perl-Class-Inspector package.
+%description license
+license components for the perl-Class-Inspector package.
+
+
+%package man
+Summary: man components for the perl-Class-Inspector package.
+Group: Default
+
+%description man
+man components for the perl-Class-Inspector package.
 
 
 %prep
@@ -51,6 +60,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/perl-Class-Inspector
+cp LICENSE %{buildroot}/usr/share/doc/perl-Class-Inspector/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot}
 else
@@ -66,6 +77,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/site_perl/5.26.1/Class/Inspector.pm
 /usr/lib/perl5/site_perl/5.26.1/Class/Inspector/Functions.pm
 
-%files doc
+%files license
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/doc/perl-Class-Inspector/LICENSE
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man3/Class::Inspector.3
+/usr/share/man/man3/Class::Inspector::Functions.3
