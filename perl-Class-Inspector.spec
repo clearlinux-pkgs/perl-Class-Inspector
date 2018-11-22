@@ -4,7 +4,7 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.32
-Release  : 5
+Release  : 6
 URL      : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Class-Inspector-1.32.tar.gz
 Summary  : 'Get information about a class and its structure'
@@ -75,8 +75,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Class/Inspector.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Class/Inspector/Functions.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Class/Inspector.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Class/Inspector/Functions.pm
 
 %files dev
 %defattr(-,root,root,-)
