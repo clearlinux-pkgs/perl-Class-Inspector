@@ -4,12 +4,13 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.34
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.34.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.34.tar.gz
 Summary  : Get information about a class and its structure
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-Class-Inspector-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -26,6 +27,14 @@ Requires: perl-Class-Inspector = %{version}-%{release}
 
 %description dev
 dev components for the perl-Class-Inspector package.
+
+
+%package license
+Summary: license components for the perl-Class-Inspector package.
+Group: Default
+
+%description license
+license components for the perl-Class-Inspector package.
 
 
 %prep
@@ -53,6 +62,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Class-Inspector
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Inspector/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -72,3 +83,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/Class::Inspector.3
 /usr/share/man/man3/Class::Inspector::Functions.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Class-Inspector/LICENSE
