@@ -4,13 +4,14 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.36
-Release  : 18
+Release  : 19
 URL      : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.36.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.36.tar.gz
-Summary  : Get information about a class and its structure
+Summary  : 'Get information about a class and its structure'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Class-Inspector-license = %{version}-%{release}
+Requires: perl-Class-Inspector-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -23,7 +24,6 @@ version 1.36
 Summary: dev components for the perl-Class-Inspector package.
 Group: Development
 Provides: perl-Class-Inspector-devel = %{version}-%{release}
-Requires: perl-Class-Inspector = %{version}-%{release}
 Requires: perl-Class-Inspector = %{version}-%{release}
 
 %description dev
@@ -38,8 +38,18 @@ Group: Default
 license components for the perl-Class-Inspector package.
 
 
+%package perl
+Summary: perl components for the perl-Class-Inspector package.
+Group: Default
+Requires: perl-Class-Inspector = %{version}-%{release}
+
+%description perl
+perl components for the perl-Class-Inspector package.
+
+
 %prep
 %setup -q -n Class-Inspector-1.36
+cd %{_builddir}/Class-Inspector-1.36
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -64,7 +74,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Class-Inspector
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Inspector/LICENSE
+cp %{_builddir}/Class-Inspector-1.36/LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Inspector/8f0de673d49fa9dcad1645c38a9bf9762e87f315
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -77,8 +87,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Class/Inspector.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Class/Inspector/Functions.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -87,4 +95,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Class-Inspector/LICENSE
+/usr/share/package-licenses/perl-Class-Inspector/8f0de673d49fa9dcad1645c38a9bf9762e87f315
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Class/Inspector.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Class/Inspector/Functions.pm
