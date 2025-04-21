@@ -7,7 +7,7 @@
 #
 Name     : perl-Class-Inspector
 Version  : 1.36
-Release  : 37
+Release  : 38
 URL      : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.36.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-1.36.tar.gz
 Summary  : 'Get information about a class and its structure'
